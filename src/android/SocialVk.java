@@ -346,10 +346,11 @@ public class SocialVk extends CordovaPlugin {
                 public void onError(VKError error) {
                     // User didn't pass Authorization
                     String err = (error == null ? "VKError is null" : error.toString());
+                    String errMessage = (error == null ? "VKError is null" : error.errorMessage);
                     Log.e(TAG, "VK Authorization error! "+err);
                     //new AlertDialog.Builder(getApplicationContext()).setMessage(error.errorMessage).show();
                     _callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, err));
-                    _callbackContext.error(error.errorMessage);
+                    _callbackContext.error(errMessage);
                 }
             })) {
             super.onActivityResult(requestCode, resultCode, data);
